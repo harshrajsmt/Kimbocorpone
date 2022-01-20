@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { MdModeEdit, MdLocationPin} from 'react-icons/md';
+import { AiFillCaretDown, AiFillInfoCircle} from 'react-icons/ai';
 import { IoMdTrash } from 'react-icons/io'; 
 import style from './Details.module.less'
-import { Col, Row, Card, Button, Select, Table} from 'antd';
+import { Col, Row, Card, Button, Select, Table, Modal, Form} from 'antd';
+import NewShareHolderInfo from '../Modals/NewShareHolder';
+import BusinessActivities from '../Modals/BusinessActivities';
 const { Option } = Select;
 
 const shareHolderColumns = [
@@ -89,6 +92,24 @@ const shareHolderColumns = [
     }
   ];
 const Details = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modal, setModal] = useState();
+    const showModal = () => {
+      setIsModalVisible(true);
+      setModal(<BusinessActivities/>)
+    };
+
+    const handleOk = () => {
+      setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+      setIsModalVisible(false);
+    };
+    const newShareHolder = ()=>{
+      setIsModalVisible(true);
+      setModal(<NewShareHolderInfo/>);
+    }
     return (
         <>
              <Row justify='space-around' style={{backgroundColor:'#f7f7f7'}}>
@@ -101,7 +122,7 @@ const Details = () => {
                     </Card>
 
 
-                    <Card title="Business Activity" className={style.Card} extra={<Button size='small'>Edit</Button>} >
+                    <Card title="Business Activity" className={style.Card} extra={<Button size='small' onClick={showModal}>Edit</Button>} >
                         <Row justify='space-around'>
                             <Col xl={11} lg={11} md={11} sm={22} xs={22}>
                                 <Select bordered={false} className={style.select} placeholder='Primary Activity'>
@@ -119,12 +140,16 @@ const Details = () => {
                             </Col>
                         </Row>
                     </Card>
+                      {/* <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
+                       
+                      </Modal> */}
 
-
-                    <Card title="Shareholders" className={style.Card} extra={<Button size='small'>Add</Button>} >
+                    <Card title="Shareholders" className={style.Card} extra={<Button size='small' onClick={newShareHolder}>Add</Button>} >
                         <Table  columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
                     </Card>
-
+                    <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
+                      {modal}
+                    </Modal>
                     <Card title="Officers / Authorised Representatives" className={style.Card} extra={<Button size='small'>Add</Button>} >
                         <Table bordered={false} columns={officersColumns} dataSource={officersData} size="small" />
                     </Card>

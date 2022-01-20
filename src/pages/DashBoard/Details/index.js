@@ -6,6 +6,9 @@ import style from './Details.module.less'
 import { Col, Row, Card, Button, Select, Table, Modal, Form} from 'antd';
 import NewShareHolderInfo from '../Modals/NewShareHolder';
 import BusinessActivities from '../Modals/BusinessActivities';
+import RemoveShareHolder from '../Modals/RemoveShareHolder';
+import PaidUpCapital from '../Modals/PaidUpCapital';
+import ChangeAddress from '../Modals/ChangeAddress';
 const { Option } = Select;
 
 const shareHolderColumns = [
@@ -32,7 +35,7 @@ const shareHolderColumns = [
       name: 'John Brown',
       Currency: 32,
       Appointment: '18/01/2022',
-      Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash/></div>,
+      Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash /></div>,
     }
   ];
 
@@ -110,6 +113,18 @@ const Details = () => {
       setIsModalVisible(true);
       setModal(<NewShareHolderInfo/>);
     }
+    const removeHolder = ()=>{
+      setIsModalVisible(true);
+      setModal(<RemoveShareHolder/>);
+    }
+    const paidUp = () =>{
+      setIsModalVisible(true);
+      setModal(<PaidUpCapital/>)
+    }
+    const changeAdd = ()=>{
+      setIsModalVisible(true);
+      setModal(<ChangeAddress/>)
+    }
     return (
         <>
              <Row justify='space-around' style={{backgroundColor:'#f7f7f7'}}>
@@ -140,11 +155,7 @@ const Details = () => {
                             </Col>
                         </Row>
                     </Card>
-                      {/* <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
-                       
-                      </Modal> */}
-
-                    <Card title="Shareholders" className={style.Card} extra={<Button size='small' onClick={newShareHolder}>Add</Button>} >
+                  <Card title="Shareholders" className={style.Card} extra={<Button size='small' onClick={newShareHolder}>Add</Button>} >
                         <Table  columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
                     </Card>
                     <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
@@ -159,11 +170,11 @@ const Details = () => {
                         <small>Number of shares including treasury shares*</small>
                     </Card>
 
-                    <Card title="Paid-up capital" className={style.Card} extra={<Button size='small'>Add</Button>} >
+                    <Card title="Paid-up capital" className={style.Card} extra={<Button size='small' onClick={paidUp}>Add</Button>} >
                         <Table pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
                     </Card>
 
-                    <Card title="Registered address" className={style.Card} style={{marginBottom:'50px'}} extra={<Button size='small'>Add</Button>} >
+                    <Card title="Registered address" className={style.Card} style={{marginBottom:'50px'}} extra={<Button size='small' onClick={changeAdd}>Add</Button>} >
                         <p>!51 Chin Swee Road Manhattan House 02-24 Singapore 169876</p>
                     </Card>
                 </Col >

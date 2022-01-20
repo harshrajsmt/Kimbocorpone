@@ -1,8 +1,7 @@
 import React from 'react';
 import style from '../../Details/Details.module.less'
 import { AiFillCaretDown, AiFillInfoCircle} from 'react-icons/ai';
-import { IoMdTrash } from 'react-icons/io'; 
-import { Col, Row, Card, Button, Select, Table, Modal, Form} from 'antd';
+import { Col, Row, Button, Select, Form} from 'antd';
 const { Option } = Select;
 const BusinessActivities = () => {
   return (
@@ -14,8 +13,8 @@ const BusinessActivities = () => {
                               rules={[{ required: true, message: 'Please input your Activity!' }]}
                             >
                               <Col xl={22} lg={22} md={22} sm={22} xs={22}>
-                                <label>Primary business activity<AiFillInfoCircle/></label>
-                                <Select bordered={false} className={style.select} >
+                                <label>Primary business activity<AiFillInfoCircle /></label>
+                                <Select bordered={false} className={style.select} suffixIcon={<AiFillCaretDown style={{color:'#000'}}/>}>
                                     <Option value="one">Business Activity one</Option>
                                     <Option value="two">Business Activity two</Option>
                                     <Option value="three">Business Activity three</Option>
@@ -29,7 +28,7 @@ const BusinessActivities = () => {
                             >
                               <Col xl={22} lg={22} md={22} sm={22} xs={22}>
                                 <label>Secondary business activity<AiFillInfoCircle/></label>
-                                <Select bordered={false} className={style.select} >
+                                <Select bordered={false} className={style.select} suffixIcon={<AiFillCaretDown style={{color:'#000'}}/>}>
                                     <Option value="one">Business Activity one</Option>
                                     <Option value="two">Business Activity two</Option>
                                     <Option value="three">Business Activity three</Option>

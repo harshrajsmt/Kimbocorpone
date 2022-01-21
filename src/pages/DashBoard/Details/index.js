@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import { MdModeEdit, MdLocationPin} from 'react-icons/md';
-import { AiFillCaretDown, AiFillInfoCircle} from 'react-icons/ai';
 import { IoMdTrash } from 'react-icons/io'; 
 import style from './Details.module.less'
-import { Col, Row, Card, Button, Select, Table, Modal, Form} from 'antd';
+import { Col, Row, Card, Button, Select, Table, Modal} from 'antd';
 import NewShareHolderInfo from '../Modals/NewShareHolder';
 import BusinessActivities from '../Modals/BusinessActivities';
 import RemoveShareHolder from '../Modals/RemoveShareHolder';

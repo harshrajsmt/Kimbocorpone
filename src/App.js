@@ -18,6 +18,8 @@ import AppointDirector from './pages/Director/AppointDirector';
 import DirectorInfo from './pages/Director/DirectorInfo';
 import Address from './pages/Address';
 import MainHeader from './components/MainHeader';
+import Payments from './pages/DashBoard/Payments';
+import PaymentPlan from './pages/DashBoard/Modals/PaymentPlans';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path='/directorinfo' element={ <DirectorInfo/> }></Route>
           <Route path='/address' element={ <Address/> }></Route>
           <Route path='/mainheader' element={ <MainHeader/> }></Route>
+          <Route path='/payments' element={ <Payments/> }></Route>
+          <Route path='/paymentplan' element={ <PaymentPlan/> }></Route>
       </Routes>
     </Router>
     </>

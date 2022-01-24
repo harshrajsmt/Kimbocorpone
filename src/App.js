@@ -20,7 +20,8 @@ import Address from './pages/Address';
 import MainHeader from './components/MainHeader';
 import Payments from './pages/DashBoard/Payments';
 import PaymentPlan from './pages/DashBoard/Modals/PaymentPlans';
-
+import CanclePlan from './pages/DashBoard/Modals/CanclePlan';
+import CheckOutPlans from './pages/DashBoard/Modals/CheckOutPlans';
 function App() {
   return (
     <>
@@ -42,6 +43,8 @@ function App() {
           <Route path='/mainheader' element={ <MainHeader/> }></Route>
           <Route path='/payments' element={ <Payments/> }></Route>
           <Route path='/paymentplan' element={ <PaymentPlan/> }></Route>
+          <Route path='/cancleplan' element={ <CanclePlan/> }></Route>
+          <Route path='/checkoutplans' element={ <CheckOutPlans/> }></Route>
       </Routes>
     </Router>
     </>

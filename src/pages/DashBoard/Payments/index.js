@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from './Payments.module.less'
 import { BiMessageDetail } from 'react-icons/bi';
-import { Col, Row, Card, Button, Table} from 'antd';
+import { Col, Row, Card, Button, Table, Modal} from 'antd';
+import PaymentPlan from '../Modals/PaymentPlans';
+import CanclePlan from '../Modals/CanclePlan';
 
 const FinanceColumns = [
     {
@@ -27,8 +29,35 @@ const FinanceColumns = [
   ];
 
 const Payments = () => {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [ModalVisible, setModalVisible] = useState(false);
+    const [modal, setModal] = useState();
+      const showModal = () => {
+        setIsModalVisible(true);
+        setModal(<PaymentPlan/>)
+      };
+      const handleOk = () => {
+        setIsModalVisible(false);
+        setModalVisible(false);
+      };
+  
+      const handleCancel = () => {
+        setIsModalVisible(false);
+        setModalVisible(false);
+      };
+      const canclePlan =()=>{
+        setModalVisible(true);
+        setModal(<CanclePlan/>)
+      }
   return (
       <>
+        <Modal width="90%" centered={true} visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
+                      {modal}
+        </Modal>
+        <Modal visible={ModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
+                      {modal}
+        </Modal>
         <Row justify='space-around' style={{backgroundColor:'#f7f7f7'}}>
             
             <Col xl={15} lg={15} md={15} sm={22} xs={22}>
@@ -37,11 +66,11 @@ const Payments = () => {
                     <Table bordered={false}  pagination={false} columns={FinanceColumns} dataSource={FinanceData} size="small" />
                 </Card>
 
-                <Card title="Current Subscription" className={style.Card} extra={<Button size='small'>Upgrade</Button>} >
+                <Card title="Current Subscription" className={style.Card} extra={<Button size='small' onClick={showModal}>Upgrade</Button>} >
                    <p>Your company is currently on the free plan. Convert your company into a legally registered entity in Singapore by upgrading to company plans.</p>
                 </Card>
 
-                <Card title="Manage Subscription" className={style.Card} extra={<Button size='small'>Add to cancle</Button>} >
+                <Card title="Manage Subscription" className={style.Card} extra={<Button size='small' onClick={canclePlan}>Add to cancle</Button>} >
                    <p>Apply to cancle your subscription.</p>
                 </Card>
             </Col>

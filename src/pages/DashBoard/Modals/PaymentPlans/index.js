@@ -1,16 +1,19 @@
 import React from 'react';
 import style from './PaymentPlans.module.less'
-import { Col, Row, Input} from 'antd';
+import { Col, Row, Input, Button} from 'antd';
 
 const PaymentPlan = () => {
+
   return (
       <>
-        <Row>
-            <Col>
-                 <label style={{fontSize:'22px', fontWeight:'bold'}} for='plan'>Current plan</label>
-            </Col>
-            <Col>
-                <Input className={style.input} name="plan" bordered={false} value='Free' disabled/> 
+        <Row  justify='center'>
+            <Col span={22} style={{display:'flex'}}>
+                <Col span={4}>
+                    <label style={{fontSize:'22px', fontWeight:'bold'}} for='plan'>Current plan</label>
+                </Col>
+                <Col span={8}>
+                    <Input className={style.input} name="plan" bordered={false} value='Free' disabled/> 
+                </Col>
             </Col>
         </Row>
         <Row justify='space-around' style={{marginTop:'30px'}}>
@@ -84,6 +87,13 @@ const PaymentPlan = () => {
                             </Col>
                         </Row>
                 </div>
+                
+            </Col>
+        </Row>
+        <Row>
+            <Col span={24}>
+                <Button type='primary' style={{ float:'right', backgroundColor:'#7f0419', height:'70%',
+                 margin:'20px 20px 20px 0px', fontSize:'20px', fontWeight:'bold'}} >Checkout</Button>
             </Col>
         </Row>
       </>

@@ -22,6 +22,7 @@ import Payments from './pages/DashBoard/Payments';
 import PaymentPlan from './pages/DashBoard/Modals/PaymentPlans';
 import CanclePlan from './pages/DashBoard/Modals/CanclePlan';
 import CheckOutPlans from './pages/DashBoard/Modals/CheckOutPlans';
+import Files from './pages/DashBoard/Files';
 function App() {
   return (
     <>
@@ -45,6 +46,7 @@ function App() {
           <Route path='/paymentplan' element={ <PaymentPlan/> }></Route>
           <Route path='/cancleplan' element={ <CanclePlan/> }></Route>
           <Route path='/checkoutplans' element={ <CheckOutPlans/> }></Route>
+          <Route path='/files' element={ <Files/> }></Route>
       </Routes>
     </Router>
     </>

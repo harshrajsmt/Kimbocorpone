@@ -155,22 +155,22 @@ const Details = () => {
                         </Row>
                     </Card>
                   <Card title="Shareholders" className={style.Card} extra={<Button size='small' onClick={newShareHolder}>Add</Button>} >
-                        <Table  columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
+                        <Table className={style.table} columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
                     </Card>
                     <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
                       {modal}
                     </Modal>
                     <Card title="Officers / Authorised Representatives" className={style.Card} extra={<Button size='small'>Add</Button>} >
-                        <Table bordered={false} columns={officersColumns} dataSource={officersData} size="small" />
+                        <Table  className={style.table}  bordered={false} columns={officersColumns} dataSource={officersData} size="small" />
                     </Card>
 
                     <Card title="Share capital" className={style.Card} extra={<Button size='small'>Add</Button>} >
-                        <Table pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
+                        <Table  className={style.table}  pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
                         <small>Number of shares including treasury shares*</small>
                     </Card>
 
                     <Card title="Paid-up capital" className={style.Card} extra={<Button size='small' onClick={paidUp}>Add</Button>} >
-                        <Table pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
+                        <Table  className={style.table}  pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
                     </Card>
 
                     <Card title="Registered address" className={style.Card} style={{marginBottom:'50px'}} extra={<Button size='small' onClick={changeAdd}>Add</Button>} >

@@ -1,19 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from './PaymentPlans.module.less'
-import { Col, Row, Input, Button} from 'antd';
+import { Col, Row, Input, Button , Modal} from 'antd';
+import CheckOutPlans from '../CheckOutPlans';
 
 const PaymentPlan = () => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = () => {
+        setIsModalVisible(true);
+        
+      };
+      const handleOk = () => {
+        setIsModalVisible(false);
+       
+      };
+  
+      const handleCancel = () => {
+        setIsModalVisible(false);
+       
+      };
 
   return (
       <>
+        <Modal width="90%" centered={true} visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
+                      <CheckOutPlans/>
+        </Modal>
         <Row  justify='center'>
-            <Col span={22} style={{display:'flex'}}>
-                <Col span={4}>
-                    <label style={{fontSize:'22px', fontWeight:'bold'}} for='plan'>Current plan</label>
+            <Col span={22} >
+                <Row>
+                <Col xl={4} lg={4} md={4} sm={22} xs={22}>
+                    <p style={{fontSize:'22px', fontWeight:'bold'}} for='plan'>Current plan</p>
                 </Col>
-                <Col span={8}>
+                <Col xl={8} lg={8} md={8} sm={22} xs={22}>
                     <Input className={style.input} name="plan" bordered={false} value='Free' disabled/> 
                 </Col>
+                </Row>
             </Col>
         </Row>
         <Row justify='space-around' style={{marginTop:'30px'}}>
@@ -26,11 +46,11 @@ const PaymentPlan = () => {
                         </Col>
                     </Row>
                     <Row justify='space-around'>
-                        <Col span={8} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
+                        <Col  xl={8} lg={8} md={8} sm={22} xs={22} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
                             <p style={{lineHeight:'0',fontWeight:'bold'}}>USD 129</p>
                             <p style={{lineHeight:'0.5'}}>Per month</p>
                         </Col>
-                        <Col span={8} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
+                        <Col xl={8} lg={8} md={8} sm={22} xs={22} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
                             <p style={{lineHeight:'0',fontWeight:'bold'}}>USD 1290</p>
                             <p style={{lineHeight:'0.5'}}>Per year</p>
                             <p style={{lineHeight:'0.5'}}>(Save 20%)</p>
@@ -58,18 +78,18 @@ const PaymentPlan = () => {
                         </Col>
                     </Row>
                     <Row justify='space-around'>
-                        <Col span={8} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
+                        <Col xl={8} lg={8} md={8} sm={22} xs={22} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
                             <p style={{lineHeight:'0',fontWeight:'bold'}}>USD 329</p>
                             <p style={{lineHeight:'0.5'}}>Per month</p>
                         </Col>
-                        <Col span={8} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
+                        <Col xl={8} lg={8} md={8} sm={22} xs={22} style={{textAlign:'center',  fontSize:'26px', marginTop:'20px'}}>
                             <p style={{lineHeight:'0',fontWeight:'bold'}}>USD 3290</p>
                             <p style={{lineHeight:'0.5'}}>Per year</p>
                             <p style={{lineHeight:'0.5'}}>(Save 20%)</p>
                         </Col>
                     </Row>
                         <Row>
-                            <Col span={11}>
+                            <Col xl={11} lg={11} md={11} sm={22} xs={22}>
                                 <ul style={{fontSize:'13px'}}>
                                     <li>Mandatory corporate secretary and nominee director appointments.</li>
                                     <li>Resolutions to cover change of financial year, registered address, business activities</li>
@@ -77,7 +97,7 @@ const PaymentPlan = () => {
                                     <li>All business incorporation certificates and constitutions</li>
                                 </ul>
                             </Col>
-                            <Col span={11}>
+                            <Col xl={11} lg={11} md={11} sm={22} xs={22}>
                                 <ul>
                                     <li>Everthing in Dormant </li>
                                     <li style={{color:'#7f0419'}}>Bank Account (WISE or ASPIRE)</li>
@@ -93,7 +113,7 @@ const PaymentPlan = () => {
         <Row>
             <Col span={24}>
                 <Button type='primary' style={{ float:'right', backgroundColor:'#7f0419', height:'70%',
-                 margin:'20px 20px 20px 0px', fontSize:'20px', fontWeight:'bold'}} >Checkout</Button>
+                 margin:'20px 20px 20px 0px', fontSize:'20px', fontWeight:'bold'}} onClick={showModal} >Checkout</Button>
             </Col>
         </Row>
       </>

@@ -18,7 +18,7 @@ const OwnerInfo = () => {
                                 <Row className={style.containBox} justify='center'>
                                     <Col   xl={18} lg={18} md={18} sm={24} xs={24}>
                                         <div>
-                                            <div><Image src={Right} preview ={false} style={{ width: '200px', margin: '20px 0px'}}/></div>
+                                            <div><Image src={Right} preview ={false} style={{ width: '150px', margin: '20px 0px'}}/></div>
                                             
                                         </div>
                                     </Col>
@@ -32,7 +32,7 @@ const OwnerInfo = () => {
                                     <Col xl={18} lg={18} md={18} sm={24} xs={24} >  
                                     
                                         <div>
-                                            <div><Link to='/shareholders' ><Image src={Cros} preview ={false} style={{ width: '200px', margin: '20px 0px'}}/></Link></div>
+                                            <div><Link to='/shareholders' ><Image src={Cros} preview ={false} style={{ width: '150px', margin: '20px 0px'}}/></Link></div>
                                             
                                         </div>
                                     </Col>

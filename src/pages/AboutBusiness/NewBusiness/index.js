@@ -1,5 +1,6 @@
 import React from 'react'
-import {Row, Col, Button, Form, Input, Select } from 'antd';
+import { Link } from 'react-router-dom';
+import {Row, Col, Button, Form, Input, Select , Tooltip} from 'antd';
 import style from './NewBusiness.module.less'
 import FrontHeader from '../../../components/FrontHeader';
 import { CaretDownOutlined, InfoCircleFilled } from '@ant-design/icons';
@@ -44,21 +45,25 @@ const NewBusiness = () => {
                                                 style={{paddingBottom:'10px'}}
                                                 defaultValue="SSIC - Company activity" 
                                                 suffixIcon= {<CaretDownOutlined className={style.icon}/>}>
-                                                    <Option value="jack">Jack</Option>
-                                                    <Option value="lucy">Lucy</Option>
-                                                    <Option value="Yiminghe">yiminghe</Option>
+                                                    <Option value="Activity one">Activity one</Option>
+                                                    <Option value="Activity two">Activity two</Option>
+                                                    <Option value="Activity three">Activity three</Option>
                                             </Select>
                                         </Form.Item> 
                                     </Col>
                                     <Col>
-                                        <InfoCircleFilled style={{fontSize:'24px', marginLeft:'10px', paddingBottom:'10px'}}/>
+                                        <Tooltip placement="topLeft" title='Company activitys'>
+                                            <InfoCircleFilled style={{fontSize:'24px', marginLeft:'10px', paddingBottom:'10px'}}/>
+                                        </Tooltip> 
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col  lg={12} xl={12} md={12} sm={24}>
-                                            <Button className={style.btn}  htmlType="submit">
+                                           <Link to='/stepform'>
+                                               <Button className={style.btn} >
                                                 Back
-                                            </Button>
+                                                </Button> 
+                                            </Link>
                                     </Col>
                                     <Col  lg={12} xl={12} md={12} sm={24}>
                                             <Button className={style.btn} style={{float:'right'}} htmlType="submit">

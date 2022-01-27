@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import { Steps, Button, message } from 'antd';
 import style from './StepForm.module.less'
 
@@ -30,6 +31,7 @@ const steps = [
   },
 ];
 const StepForm = () => {
+  const navigate = useNavigate();
     const [current, setCurrent] = React.useState(0);
 
   const next = () => {
@@ -42,8 +44,8 @@ const StepForm = () => {
     return (
         <>
         <FrontHeader/>
-        <Row>
-            <Col span={20} offset={2} style={{marginTop:'30px'}}>
+        <Row justify='center' style={{paddingBottom:'20px'}}>
+            <Col span={20} style={{marginTop:'30px'}}>
             <div className={style.stepsBox}>
                 <Steps labelPlacement='vertical' current={current}>
                     {steps.map(item => (
@@ -58,7 +60,8 @@ const StepForm = () => {
                         </Button>
                     )}
                     {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                    <Button type="primary" onClick={() =>  navigate("/mainheader")}>
+                      {/* message.success('Processing complete!') */}
                         Done
                     </Button>
                     )}

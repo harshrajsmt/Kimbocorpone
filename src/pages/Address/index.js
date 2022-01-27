@@ -9,15 +9,15 @@ const Address = () => {
     return (
         <>
             <div className={style.container}>
-                <Row>
-                    <Col span={20} offset={2}>
-                        <Row className={style.first_heading}>
-                            <Col span={20} offset={2}>
+                <Row justify='center'>
+                    <Col span={20} >
+                        <Row className={style.first_heading} justify='center'>
+                            <Col span={20} >
                             kimbocorp will utilise our address for your business when
                             incorporated. We will scan your mails, upload them to your
                             account and forward them to your email.</Col>
                         </Row>
-                        <Row className={style.second_heading}><Col span={20} offset={2}>
+                        <Row className={style.second_heading} justify='center'><Col span={20}>
                             You can contact us to change this anytime later</Col> 
                         </Row>
                             <Form>

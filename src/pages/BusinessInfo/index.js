@@ -7,7 +7,7 @@ import Bulb from './Images/Bulb.png'
 const BusinessInfo = () => {
     return (
         <>
-        <div>
+        <div style={{minHeight:'450px'}}>
             <Row>
                 <Col span={24} >
                     <h1 className={style.bold}>Let us help you put the business together.</h1> 
@@ -19,11 +19,11 @@ const BusinessInfo = () => {
                 </Col>
             </Row>
             <Row>
-                <Col lg={12} sm={24}> 
+                <Col lg={12} xl={12} md={12} xs={24} sm={24}> 
                    <Row justify='center'>
                        <Col  xl={14} lg={14} md={18} sm={24} xs={24} >
                         <div>
-                            <div><Link to='/existbusinessinfo'><Image src={Book} preview ={false} style={{ width: '200px', margin: '20px 0px'}}/></Link></div>
+                            <div><Link to='/existbusinessinfo'><Image src={Book} preview ={false} style={{ width: '150px', margin: '20px 0px'}}/></Link></div>
                             <div>
                                 <h1 className={style.font} >This is an existing business already incorporated elsewhere</h1>
                             </div>
@@ -32,11 +32,11 @@ const BusinessInfo = () => {
                    </Row>
                     
                 </Col>
-                <Col  lg={12} sm={24}>
+                <Col  lg={12} xl={12} md={12} xs={24} sm={24}>
                     <Row justify='center'>
                        <Col xl={14} lg={14} md={18} sm={24} xs={24}>
                         <div>
-                            <div><Link to='/newbusiness'><Image src={Bulb} preview ={false} style={{ width: '200px', margin: '20px 0px'}}/> </Link></div>
+                            <div><Link to='/newbusiness'><Image src={Bulb} preview ={false} style={{ width: '150px', margin: '20px 0px'}}/> </Link></div>
                             <div>
                                 <h1 className={style.font} >This is a new business that is not yet incorporated anywhere</h1>
                             </div>

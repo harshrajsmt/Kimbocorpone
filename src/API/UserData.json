@@ -1,0 +1,24 @@
+{
+    "userdata":[
+        {
+            "id": 1,
+            "Name":"Pony",
+            "Member":"One member"
+        },
+        {
+            "id": 2,
+            "Name":"indigo",
+            "Member":"One member"
+        },
+        {
+            "id": 3,
+            "Name":"hooligan",
+            "Member":"One member"
+        },
+        {
+            "id": 4,
+            "Name":"InProved",
+            "Member":"One member"
+        }
+    ]
+}

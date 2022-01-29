@@ -24,6 +24,7 @@ import CanclePlan from './pages/DashBoard/Modals/CanclePlan';
 import CheckOutPlans from './pages/DashBoard/Modals/CheckOutPlans';
 import Files from './pages/DashBoard/Files';
 import Invite from './pages/DashBoard/Invite';
+import Tasks from './pages/DashBoard/Tasks';
 function App() {
   return (
     <>
@@ -49,6 +50,7 @@ function App() {
           <Route path='/checkoutplans' element={ <CheckOutPlans/> }></Route>
           <Route path='/files' element={ <Files/> }></Route>
           <Route path='/invite' element={ <Invite/> }></Route>
+          <Route path='/tasks' element={ <Tasks/> }></Route>
       </Routes>
     </Router>
     </>

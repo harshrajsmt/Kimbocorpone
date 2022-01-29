@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {Row, Col, Button, Form, Input, Select } from 'antd';
+import {Row, Col, Button, Form, Input, Select, Tooltip } from 'antd';
 import style from './ExistingBusiness.module.less'
 import FrontHeader from '../../../components/FrontHeader';
 import { CaretDownOutlined, InfoCircleFilled } from '@ant-design/icons';
@@ -13,8 +13,8 @@ const ExistingBusiness = () => {
         <>
             <FrontHeader/>
             <div className={style.container}>
-                <Row>
-                    <Col span={20} offset={2}>
+                <Row justify='center'>
+                    <Col span={20}>
                         <Row className={style.first_heading}>Information about your existing Singapore company</Row>
                             <Form>
                                 <Row style={{marginBottom:'50px'}}>
@@ -53,14 +53,16 @@ const ExistingBusiness = () => {
                                                 style={{paddingBottom:'10px'}}
                                                 defaultValue="SSIC - Company activity" 
                                                 suffixIcon= {<CaretDownOutlined className={style.icon}/>}>
-                                                    <Option value="jack">Jack</Option>
-                                                    <Option value="lucy">Lucy</Option>
-                                                    <Option value="Yiminghe">yiminghe</Option>
+                                                    <Option value="one">Company activity one</Option>
+                                                    <Option value="two">Company activity two</Option>
+                                                    <Option value="three">Company activity three</Option>
                                             </Select>
                                         </Form.Item> 
                                     </Col>
                                     <Col>
-                                        <InfoCircleFilled style={{fontSize:'24px', marginLeft:'10px', paddingBottom:'10px'}}/>
+                                        <Tooltip placement="topLeft" title='Activitys'>
+                                            <InfoCircleFilled style={{fontSize:'24px', marginLeft:'10px', paddingBottom:'10px', cursor:'pointer'}}/>
+                                        </Tooltip>
                                     </Col>
                                 </Row>
                                 <Row>

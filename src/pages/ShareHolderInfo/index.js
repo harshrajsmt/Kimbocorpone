@@ -1,49 +1,65 @@
-import React from 'react'
-import {Row, Col, Button, Form, Input, Select } from 'antd';
+import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
+import {Row, Col, Button, Form, Input } from 'antd';
 import style from './ShareHolderInfo.module.less'
 import FrontHeader from '../../components/FrontHeader';
 
-const { Option } = Select;
-
 const ShareHolderInfo = () => {
+    const navigate = useNavigate();
+const [shareHolderInfo, setShareHolderInfo] = useState({
+    FirstName:'',
+    LastName:'',
+    Email:'',
+    MobileNumber:'',
+
+})
+console.log(shareHolderInfo)
+    const onHandleChange = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+        setShareHolderInfo({...shareHolderInfo, [name]:value});
+    }
+
     return (
         <>
             <FrontHeader/>
             <div className={style.container}>
-                <Row>
-                    <Col span={20} offset={2}>
+                <Row justify='center'>
+                    <Col span={20}>
                         <Row className={style.first_heading}>Information about other shareholder</Row>
                             <Form>
                                 <Row style={{marginBottom:'50px', display:'flex', justifyContent: 'start'}}>
                                     <Col  lg={12} xl={12} md={24} sm={24}>
                                         <Form.Item
-                                                name="First Name"
-                                                
+                                                name="FirstName"
                                                 rules={[
                                                 {
                                                     required: true,
                                                     message: 'First Name is required',
                                                 },
                                                 ]}> 
-                                                <Input bordered={false}  className={style.input} placeholder="First Name"/>
+                                                <Input name="FirstName" bordered={false}  className={style.input} 
+                                                placeholder="First Name" onChange={onHandleChange}/>
                                          </Form.Item>
                                     </Col>
                                     <Col lg={12}  xl={12} md={24} sm={24}  >
-                                        <Form.Item name="Last Name"
+                                        <Form.Item 
+                                                 name='LastName' 
                                                 rules={[
                                                     {
                                                         required: true,
                                                         message: 'Last Name is required',
                                                     }
                                                 ]}> 
-                                                <Input bordered={false} className={style.input} placeholder="Last Name"/>
+                                                <Input name='LastName' bordered={false} className={style.input} 
+                                                placeholder="Last Name" onChange={onHandleChange}/>
                                          </Form.Item>
                                     </Col>
                                 </Row>
                                 <Row style={{marginBottom:'50px'}}>
                                     <Col  lg={12} xl={12} md={24} sm={24}>
                                         <Form.Item
-                                                name="Email"
+                                                name='Email'
                                                 
                                                 rules={[
                                                 {
@@ -51,7 +67,8 @@ const ShareHolderInfo = () => {
                                                     message: 'Email is required',
                                                 },
                                                 ]}> 
-                                                <Input bordered={false} className={style.input} placeholder="Email address"/>
+                                                <Input name='Email' bordered={false} className={style.input}
+                                                 placeholder="Email address" onChange={onHandleChange}/>
                                                 <Button className={style.btn} style={{marginLeft:'10px'}}>
                                                 Check
                                                 </Button>
@@ -59,20 +76,22 @@ const ShareHolderInfo = () => {
                                          
                                     </Col>
                                     <Col lg={12} xl={12} md={24} sm={24}  >
-                                        <Form.Item name="Mobile Number"
+                                        <Form.Item 
+                                                name='MobileNumber'
                                                 rules={[
                                                     {
                                                         required: true,
                                                         message: 'Mobile Number is required',
                                                     }
                                                 ]}> 
-                                                <Input bordered={false} className={style.input} placeholder="Mobile Number"/>
+                                                <Input name='MobileNumber' bordered={false} className={style.input}
+                                                 placeholder="Mobile Number" onChange={onHandleChange}/>
                                          </Form.Item>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col lg={12} xl={12} md={12} sm={24} >
-                                          <Button className={style.btn}>
+                                          <Button className={style.btn} onClick={()=> navigate(-1)}>
                                                 Back
                                           </Button>
                                     </Col>

@@ -20,5 +20,20 @@
             "Name":"InProved",
             "Member":"One member"
         }
+    ],
+    
+    "selectValue" : [
+        {
+            "id":1,
+            "value":"Company activity one"
+        },
+        {
+            "id":2,
+            "value":"Company activity two"
+        },
+        {
+            "id":3,
+            "value":"Company activity three"
+        }
     ]
 }

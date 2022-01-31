@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {getDataAsync} from './FrontPageSlice'
+// import { getCategoryAsync , getCategorySelector , clearAuthState } from './FrontPageSlice'
 import { Link } from 'react-router-dom';
 import style from '../FrontPage/FrontPage.module.less'
 import { Layout,  Row, Col, Button } from 'antd';
@@ -30,7 +31,7 @@ const FrontPage = () => {
                            
                                     {userData.map((user) => (
 
-                                        <Row className={style.userBox}>
+                                        <Row className={style.userBox} key={user.id}>
                                             <Col xl={8} lg={8} md={24} sm={24} xs={24}>
                                                 <div className={style.name}><p >{user.Name}</p> </div>
                                                 <div> <small>kimbocorp.com/{user.Name}</small> </div>

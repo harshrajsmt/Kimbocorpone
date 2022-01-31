@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {businessActivity} from './getNewBusinessSlice'
 import { Link } from 'react-router-dom';
 import {Row, Col, Button, Form, Input, Select , Tooltip} from 'antd';
 import style from './NewBusiness.module.less'
@@ -6,8 +8,27 @@ import FrontHeader from '../../../components/FrontHeader';
 import { CaretDownOutlined, InfoCircleFilled } from '@ant-design/icons';
 
 const { Option } = Select;
-const message = <span style={{fontSize:'23px'}}>It seems like it is available in Singapore, or Please enter another name, it seems like it is not available in Singapore</span>
+const message = 'It seems like it is available in Singapore, or Please enter another name, it seems like it is not available in Singapore'
+
 const NewBusiness = () => {
+
+    const {selectActivity, loading} = useSelector((state)=> state.selectActivity);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(businessActivity());
+    }, [])
+
+    const [businessInfo, setBusinessInfo] = useState({
+        CompanyName:'',
+        CompanyActivity: '',
+    })
+    console.log('businessIfo', businessInfo)
+    const onHandleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setBusinessInfo({...businessInfo, [name]:value});
+            
+        }
     return (
         <>
             <FrontHeader/>
@@ -27,7 +48,7 @@ const NewBusiness = () => {
                                                     message: {message},
                                                 },
                                                 ]}> 
-                                                <Input bordered={false} className={style.input} placeholder="Company name - first choice"/>
+                                                <Input name="CompanyName" bordered={false} className={style.input} placeholder="Company name - first choice" onChange={onHandleChange}/>
                                          </Form.Item>
                                     </Col>
                                     <Col lg={8} xl={8} md={24} sm={24}>
@@ -43,11 +64,15 @@ const NewBusiness = () => {
                                         <Form.Item>
                                             <Select bordered={false} className={style.input} 
                                                 style={{paddingBottom:'10px'}}
+                                                name = "CompanyActivity"
                                                 defaultValue="SSIC - Company activity" 
-                                                suffixIcon= {<CaretDownOutlined className={style.icon}/>}>
-                                                    <Option value="Activity one">Activity one</Option>
-                                                    <Option value="Activity two">Activity two</Option>
-                                                    <Option value="Activity three">Activity three</Option>
+                                                suffixIcon= {<CaretDownOutlined className={style.icon} onChange={onHandleChange}/>}>
+                                                    {selectActivity.map((activity)=>(
+                                                        <Option value={activity.value} key={activity.id}>{activity.value}</Option>
+                                                    ))}
+                                                    
+                                                    {/* <Option value="Activity two">Activity two</Option>
+                                                    <Option value="Activity three">Activity three</Option> */}
                                             </Select>
                                         </Form.Item> 
                                     </Col>

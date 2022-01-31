@@ -35,7 +35,7 @@ const ExistBusinessInfo = () => {
                                     <Col span={18} >  
                                     
                                         <div>
-                                            <div><Image src={Cros} preview ={false} style={{ width: '200px', margin: '20px 0px'}}/></div>
+                                            <div><Link to='/stepform'><Image src={Cros} preview ={false} style={{ width: '200px', margin: '20px 0px'}}/></Link></div>
                                             
                                         </div>
                                     </Col>

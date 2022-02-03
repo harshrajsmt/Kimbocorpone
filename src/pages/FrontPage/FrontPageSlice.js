@@ -60,10 +60,13 @@
 //New code
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+// import axios from 'axios'
 
 export const getDataAsync = createAsyncThunk( "userData/getDataAsync", async () => {
     return fetch("http://localhost:5000/userdata").then((res) => 
     res.json()
+    // axios.get('http://localhost:5000/userdata').then((res)=> res.json()
+    
  );
 });
 

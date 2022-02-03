@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import { Steps, Button, message } from 'antd';
+import { Steps, Button } from 'antd';
 import style from './StepForm.module.less'
 
 import { Row, Col } from 'antd';

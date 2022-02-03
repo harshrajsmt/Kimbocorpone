@@ -1,4 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { ShareHolders } from './getShareHolderSlice';
+import { Officers } from './getOfficersSlice';
+import { Capitals } from './getCapitalSlice';
+import { Activity } from './getBusinessActivitySlice';
 import { MdModeEdit, MdLocationPin} from 'react-icons/md';
 import { IoMdTrash } from 'react-icons/io'; 
 import style from './Details.module.less'
@@ -11,32 +16,33 @@ import ChangeAddress from '../Modals/ChangeAddress';
 const { Option } = Select;
 
 const shareHolderColumns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
+  {
+    title: 'Name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Ordinary number/ Currency',
+    dataIndex: 'Currency',
+  },
+  {
+    title: 'Date Of Appointment',
+    dataIndex: 'Appointment',
+  },
+  {
+      title: 'Action',
+      dataIndex: 'Action',
     },
-    {
-      title: 'Ordinary number/ Currency',
-      dataIndex: 'Currency',
-    },
-    {
-      title: 'Date Of Appointment',
-      dataIndex: 'Appointment',
-    },
-    {
-        title: 'Action',
-        dataIndex: 'Action',
-      },
-  ];
-  const shareHolderData = [
-    {
-      key: '1',
-      name: 'John Brown',
-      Currency: 32,
-      Appointment: '18/01/2022',
-      Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash /></div>,
-    }
-  ];
+];
+
+// const shareHolderData = [
+    // {
+//       key: '1',
+//       name: 'John Brown',
+//       Currency: 32,
+//       Appointment: '18/01/2022',
+      // Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash /></div>,
+    // }
+// ];
 
   const officersColumns = [
     {
@@ -56,15 +62,15 @@ const shareHolderColumns = [
         dataIndex: 'Action',
       },
   ];
-  const officersData = [
-    {
-      key: '1',
-      name: 'John Brown',
-      Nationality: 'Singapore / Director',
-      Appointment: '18/01/2022',
-      Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash/></div>,
-    }
-  ];
+  // const officersData = [
+  //   {
+  //     key: '1',
+  //     name: 'John Brown',
+  //     Nationality: 'Singapore / Director',
+  //     Appointment: '18/01/2022',
+  //     Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash/></div>,
+  //   }
+  // ];
 
   const ShareCapitalColumns = [
     {
@@ -84,16 +90,38 @@ const shareHolderColumns = [
         dataIndex: 'ShareType',
       },
   ];
-  const  ShareCapitalData = [
-    {
-      key: '1',
-      amount: 10000,
-      sharesNo: 1000,
-      Currency: 'SDG',
-      ShareType:'Ordinary',
-    }
-  ];
+  // const  ShareCapitalData = [
+  //   {
+  //     key: '1',
+  //     amount: 10000,
+  //     sharesNo: 1000,
+  //     Currency: 'SDG',
+  //     ShareType:'Ordinary',
+  //   }
+  // ];
 const Details = () => {
+  const dispatch = useDispatch();
+  const {ShareHoldersInfo} = useSelector((state)=> state.ShareHoldersInfo);
+        useEffect(() => {
+            dispatch(ShareHolders());
+        }, [])
+
+   const {OfficersInfo} = useSelector((state)=> state.OfficersInfo);
+        useEffect(() => {
+            dispatch(Officers());
+        }, [])
+
+   const {CapitalData} = useSelector((state)=> state.CapitalData);
+        useEffect(() => {
+            dispatch(Capitals());
+        }, []);
+        
+  // const {ActivityData} = useSelector((state)=> state.ActivityData);
+  //       useEffect(() => {
+  //           dispatch(Activity());
+  //       }, []);
+   
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modal, setModal] = useState();
     const showModal = () => {
@@ -140,37 +168,42 @@ const Details = () => {
                         <Row justify='space-around'>
                             <Col xl={11} lg={11} md={11} sm={22} xs={22}>
                                 <Select bordered={false} className={style.select} placeholder='Primary Activity'>
-                                    <Option value="one">Business Activity one</Option>
-                                    <Option value="two">Business Activity two</Option>
-                                    <Option value="three">Business Activity three</Option>
+                                 
+                                  {/* {
+                                    ActivityData[0].Primary.map((data)=>{
+                                        <Option value={data.Value} key={data.id}>{data.Value}</Option>
+                                    })
+                                  } */}
                                 </Select>
                             </Col>
                             <Col xl={11} lg={11} md={11} sm={22} xs={22}>
                                 <Select bordered={false} className={style.select} placeholder='Secondary Activity'>
-                                    <Option value="one">Business Activity one</Option>
-                                    <Option value="two">Business Activity two</Option>
-                                    <Option value="three">Business Activity three</Option>
+                                {/* {
+                                    ActivityData.Secondry.map((data)=>(
+                                        <Option value={data.Value} key={data.id}>{data.Value}</Option>
+                                    ))
+                                } */}
                                 </Select>
                             </Col>
                         </Row>
                     </Card>
                   <Card title="Shareholders" className={style.Card} extra={<Button size='small' onClick={newShareHolder}>Add</Button>} >
-                        <Table className={style.table} columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
+                        <Table className={style.table} columns={shareHolderColumns} dataSource={ShareHoldersInfo} size="small" />
                     </Card>
                     <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
                       {modal}
                     </Modal>
                     <Card title="Officers / Authorised Representatives" className={style.Card} extra={<Button size='small'>Add</Button>} >
-                        <Table  className={style.table}  bordered={false} columns={officersColumns} dataSource={officersData} size="small" />
+                        <Table  className={style.table}  bordered={false} columns={officersColumns} dataSource={OfficersInfo} size="small" />
                     </Card>
 
                     <Card title="Share capital" className={style.Card} extra={<Button size='small'>Add</Button>} >
-                        <Table  className={style.table}  pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
+                        <Table  className={style.table}  pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={CapitalData} size="small" />
                         <small>Number of shares including treasury shares*</small>
                     </Card>
 
                     <Card title="Paid-up capital" className={style.Card} extra={<Button size='small' onClick={paidUp}>Add</Button>} >
-                        <Table  className={style.table}  pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
+                        <Table  className={style.table}  pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={CapitalData} size="small" />
                     </Card>
 
                     <Card title="Registered address" className={style.Card} style={{marginBottom:'50px'}} extra={<Button size='small' onClick={changeAdd}>Add</Button>} >

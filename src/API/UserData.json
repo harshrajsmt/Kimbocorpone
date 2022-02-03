@@ -35,5 +35,67 @@
             "id":3,
             "value":"Company activity three"
         }
+    ],
+    "ShareHolders" :  [
+        {
+            "key":1,
+            "name":"John Brown",
+            "Currency" :32,
+            "Appointment":"18/01/2022"
+            
+        }
+    ],
+
+    "Officers" : [
+        {
+            "key": 1,
+            "name": "John Brown",
+            "Nationality": "Singapore / Director",
+            "Appointment": "18/01/2022"
+        }
+    ],
+
+    "ShareCapital" : [
+        {
+            "key": 1,
+            "amount": 10000,
+            "sharesNo": 1000,
+            "Currency": "SDG",
+            "ShareType":"Ordinary"
+        }
+    ],
+
+    "BusinessActivity" : [
+        {
+            "Primary":[
+                {
+                    "id":1,
+                    "Value": "Primary activity one"
+                },
+                {
+                    "id":2,
+                    "Value" : "Primary activity two"
+                },
+                {
+                    "id":3,
+                    "Value" : "Primary activity three"
+                }
+            ],
+            "Secondry":[
+                {
+                    "id":1,
+                    "Value": "Secondry activity one"
+                },
+                {
+                    "id":2,
+                    "Value" : "Secondry activity two"
+                },
+                {
+                    "id":3,
+                    "Value" : "Secondry activity three"
+                }
+            ]
+        }
     ]
 }
+

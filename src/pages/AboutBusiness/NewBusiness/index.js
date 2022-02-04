@@ -70,9 +70,6 @@ const NewBusiness = () => {
                                                     {selectActivity.map((activity)=>(
                                                         <Option value={activity.value} key={activity.id}>{activity.value}</Option>
                                                     ))}
-                                                    
-                                                    {/* <Option value="Activity two">Activity two</Option>
-                                                    <Option value="Activity three">Activity three</Option> */}
                                             </Select>
                                         </Form.Item> 
                                     </Col>

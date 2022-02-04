@@ -1,14 +1,37 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { useDispatch } from "react-redux";
+import { updateAddressAsync } from './ChangeAddressSlice';
 import style from './ChangeAddress.module.less'
 import { Row, Col, Button, Form, Input, Select} from 'antd';
 const { Option } = Select;
 const ChangeAddress = () => {
+
+    const dispatch = useDispatch();
+    const [address, setAddress] = useState({
+        firstLine: '',
+        secondLine: '',
+        country: '',
+        postCode: '',
+    })
+    const newAddress = {
+        id : 22,
+        Add:  address.firstLine + " " + address.secondLine + " " + address.country + " " + address.postCode
+    }
+    console.log(newAddress);
+    const changeHandler = (e)=>{
+        const { name, value } = e.target;
+        setAddress({ ...address, [name]: value})
+    }
+   
+    const updateAddress = () => {
+        dispatch(updateAddressAsync(newAddress));
+      };
   return (
       <>
       <h2 style={{fontWeight:'bold'}}>Change registered address</h2>
       <h2>Current registered address</h2>
       <Row>
-            <Input bordered={false} className={style.input} value='151 Chin Swee Road Manhattan house' disabled />
+            <Input  bordered={false} className={style.input} value='151 Chin Swee Road Manhattan house' disabled />
       </Row>
       <Row>
             <Input bordered={false} className={style.input} value='02-24 Singapore 169876' disabled />
@@ -17,15 +40,15 @@ const ChangeAddress = () => {
       <Form>
           <Row>
               <Form.Item>
-                <Input bordered={false} className={style.input}  placeholder='Address line 1'/>
-                <Input bordered={false} className={style.input}  placeholder='Address line 2'/>
+                <Input name='firstLine' bordered={false} className={style.input}  placeholder='Address line 1' onChange={changeHandler}/>
+                <Input name='secondLine' bordered={false} className={style.input}  placeholder='Address line 2' onChange={changeHandler}/>
               </Form.Item>
           </Row>
           <Row>
             
                 <Col lg={12} xl={12} md={22} sm={22}>
                 <Form.Item>
-                    <Select bordered={false} className={style.select} placeholder='Country' >
+                    <Select name='country' bordered={false} className={style.select} placeholder='Country' onChange={(value)=>setAddress(prev=>({...prev, country : value}))} >
                         <Option value="Singapore">Singapore</Option>
                         <Option value="USA">USA</Option>
                         <Option value="INDIA">INDIA</Option>
@@ -36,7 +59,7 @@ const ChangeAddress = () => {
             
                 <Col lg={12} xl={12} md={22} sm={22}>
                 <Form.Item>
-                    <Input bordered={false} className={style.input}  placeholder='Post Code'/>
+                    <Input name='postCode' type='number' bordered={false} className={style.input}  placeholder='Post Code' onChange={changeHandler}/>
                 </Form.Item>
                 </Col>
           </Row>
@@ -50,7 +73,7 @@ const ChangeAddress = () => {
                 </Col>
                     <Col lg={12} xl={12} md={12} sm={24}>
                         <Form.Item>
-                            <Button className={style.btn} style={{ float: 'right' }} htmlType="submit">
+                            <Button className={style.btn} style={{ float: 'right' }} htmlType="submit" onClick={updateAddress}>
                                 Agree and submit
                             </Button>
                         </Form.Item>

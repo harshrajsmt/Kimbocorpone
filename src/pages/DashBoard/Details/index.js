@@ -13,7 +13,7 @@ import BusinessActivities from '../Modals/BusinessActivities';
 import RemoveShareHolder from '../Modals/RemoveShareHolder';
 import PaidUpCapital from '../Modals/PaidUpCapital';
 import ChangeAddress from '../Modals/ChangeAddress';
-const { Option } = Select;
+// const { Option } = Select;
 
 const shareHolderColumns = [
   {
@@ -90,15 +90,7 @@ const shareHolderColumns = [
         dataIndex: 'ShareType',
       },
   ];
-  // const  ShareCapitalData = [
-  //   {
-  //     key: '1',
-  //     amount: 10000,
-  //     sharesNo: 1000,
-  //     Currency: 'SDG',
-  //     ShareType:'Ordinary',
-  //   }
-  // ];
+ 
 const Details = () => {
   const dispatch = useDispatch();
   const {ShareHoldersInfo} = useSelector((state)=> state.ShareHoldersInfo);
@@ -119,7 +111,7 @@ const Details = () => {
   // const {ActivityData} = useSelector((state)=> state.ActivityData);
   //       useEffect(() => {
   //           dispatch(Activity());
-  //       }, []);
+  //       });
    
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -170,7 +162,7 @@ const Details = () => {
                                 <Select bordered={false} className={style.select} placeholder='Primary Activity'>
                                  
                                   {/* {
-                                    ActivityData[0].Primary.map((data)=>{
+                                    ActivityData.Primary.map((data)=>{
                                         <Option value={data.Value} key={data.id}>{data.Value}</Option>
                                     })
                                   } */}

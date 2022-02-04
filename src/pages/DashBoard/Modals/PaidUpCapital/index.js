@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useState} from 'react'
+import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { addCapitalsAsync} from './addPaidUpCapitalSlice'
 import { Row, Col, Button, Form, Input, Select} from 'antd';
 import style from './PaidUpCapital.module.less'
 const { Option } = Select;
 const PaidUpCapital = () => {
+   const Id = Date.now().toString();
+//    const Capitals = useSelector(showCapitals);
+   const dispatch = useDispatch();
+
+   const [capitalInfo, setCapitalInfo] = useState({
+        id:Id,
+        amount : '',
+        sharesNo : '',
+        Currency : '',
+        ShareType : '',
+    })
+
+        const changeHandler = (e)=>{
+            const { name, value } = e.target;
+            setCapitalInfo({...capitalInfo, [name]: value })
+        }
+
+    const addNewCapitals = (e) => {
+        dispatch(addCapitalsAsync(capitalInfo));
+      };
+
     return (
         <>
 
@@ -13,12 +37,12 @@ const PaidUpCapital = () => {
                     
                     <Col lg={12} xl={12} md={24} sm={24}>
                         <Form.Item>
-                            <Input bordered={false} className={style.input} placeholder="USD" />
+                            <Input name='amount' bordered={false} className={style.input} placeholder="USD" onChange={changeHandler} />
                         </Form.Item>
                     </Col>
                     <Col lg={12} xl={12} md={24} sm={24}  >
                         <Form.Item >
-                            <Input bordered={false} className={style.input} placeholder="1000" />
+                            <Input name='sharesNo' bordered={false} className={style.input} placeholder="Number of shares" onChange={changeHandler} />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -27,16 +51,16 @@ const PaidUpCapital = () => {
                     
                     <Col lg={12} xl={12} md={24} sm={24}> 
                         <Form.Item>
-                            <Select bordered={false} className={style.select} >
-                                <Option value="one">USD</Option>
-                                <Option value="two">INR</Option>
-                                <Option value="three">YEN</Option>
+                            <Select name='Currency' bordered={false} className={style.select} onChange={(value)=>setCapitalInfo(prev=>({...prev, Currency : value}))}>
+                                <Option value="USD">USD</Option>
+                                <Option value="INR">INR</Option>
+                                <Option value="YEN">YEN</Option>
                             </Select>
                         </Form.Item>
                     </Col>
                     <Col lg={12} xl={12} md={24} sm={24}  >
                         <Form.Item >
-                            <Input bordered={false} className={style.input}/>
+                            <Input name='ShareType' bordered={false} placeholder='Type of share' className={style.input} onChange={changeHandler}/>
                         </Form.Item>
                     </Col>
                 </Row>
@@ -44,10 +68,10 @@ const PaidUpCapital = () => {
                  <p>1. We will contact you directly to confirm the amendment</p>
                 <Row>
                     <Col lg={12} xl={12} md={12} sm={24} style={{fontSize:'18px', paddingTop:'10px'}} >
-                        <a href='#'>Contact Us</a>
+                        <Link to=''>Contact Us</Link>
                     </Col>
                     <Col lg={12} xl={12} md={12} sm={24}>
-                        <Button className={style.btn} style={{ float: 'right' }} htmlType="submit">
+                        <Button className={style.btn} style={{ float: 'right' }} htmlType="submit" onClick={addNewCapitals}>
                             Agree and submit
                         </Button>
                     </Col>

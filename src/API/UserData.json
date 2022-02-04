@@ -1,101 +1,120 @@
 {
-    "userdata":[
-        {
-            "id": 1,
-            "Name":"Pony",
-            "Member":"One member"
-        },
-        {
-            "id": 2,
-            "Name":"indigo",
-            "Member":"One member"
-        },
-        {
-            "id": 3,
-            "Name":"hooligan",
-            "Member":"One member"
-        },
-        {
-            "id": 4,
-            "Name":"InProved",
-            "Member":"One member"
-        }
+  "userdata": [
+    {
+      "id": 1,
+      "Name": "Pony",
+      "Member": "One member"
+    },
+    {
+      "id": 2,
+      "Name": "indigo",
+      "Member": "One member"
+    },
+    {
+      "id": 3,
+      "Name": "hooligan",
+      "Member": "One member"
+    },
+    {
+      "id": 4,
+      "Name": "InProved",
+      "Member": "One member"
+    }
+  ],
+  "selectValue": [
+    {
+      "id": 1,
+      "value": "Company activity one"
+    },
+    {
+      "id": 2,
+      "value": "Company activity two"
+    },
+    {
+      "id": 3,
+      "value": "Company activity three"
+    }
+  ],
+  "ShareHolders": [
+    {
+      "key": 1,
+      "name": "John Brown",
+      "Currency": 32,
+      "Appointment": "18/01/2022"
+    }
+  ],
+  "Officers": [
+    {
+      "key": 1,
+      "name": "John Brown",
+      "Nationality": "Singapore / Director",
+      "Appointment": "18/01/2022"
+    }
+  ],
+  "ShareCapital": [
+    {
+      "id": 1,
+      "amount": 10000,
+      "sharesNo": 1000,
+      "Currency": "SDG",
+      "ShareType": "Ordinary"
+    },
+    {
+      "id": "1643967579298",
+      "amount": "100",
+      "sharesNo": "200",
+      "Currency": "INR",
+      "ShareType": "Ordinary"
+    },
+    {
+      "id": "1643977721392",
+      "amount": "100",
+      "sharesNo": "300",
+      "Currency": "YEN",
+      "ShareType": "ordinary"
+    }
+  ],
+  "BusinessActivity": {
+    "Primary": [
+      {
+        "id": 1,
+        "Value": "Primary activity one"
+      },
+      {
+        "id": 2,
+        "Value": "Primary activity two"
+      },
+      {
+        "id": 3,
+        "Value": "Primary activity three"
+      }
     ],
-    
-    "selectValue" : [
-        {
-            "id":1,
-            "value":"Company activity one"
-        },
-        {
-            "id":2,
-            "value":"Company activity two"
-        },
-        {
-            "id":3,
-            "value":"Company activity three"
-        }
-    ],
-    "ShareHolders" :  [
-        {
-            "key":1,
-            "name":"John Brown",
-            "Currency" :32,
-            "Appointment":"18/01/2022"
-            
-        }
-    ],
-
-    "Officers" : [
-        {
-            "key": 1,
-            "name": "John Brown",
-            "Nationality": "Singapore / Director",
-            "Appointment": "18/01/2022"
-        }
-    ],
-
-    "ShareCapital" : [
-        {
-            "key": 1,
-            "amount": 10000,
-            "sharesNo": 1000,
-            "Currency": "SDG",
-            "ShareType":"Ordinary"
-        }
-    ],
-
-    "BusinessActivity" : [
-        {
-            "Primary":[
-                {
-                    "id":1,
-                    "Value": "Primary activity one"
-                },
-                {
-                    "id":2,
-                    "Value" : "Primary activity two"
-                },
-                {
-                    "id":3,
-                    "Value" : "Primary activity three"
-                }
-            ],
-            "Secondry":[
-                {
-                    "id":1,
-                    "Value": "Secondry activity one"
-                },
-                {
-                    "id":2,
-                    "Value" : "Secondry activity two"
-                },
-                {
-                    "id":3,
-                    "Value" : "Secondry activity three"
-                }
-            ]
-        }
+    "Secondry": [
+      {
+        "id": 1,
+        "Value": "Secondry activity one"
+      },
+      {
+        "id": 2,
+        "Value": "Secondry activity two"
+      },
+      {
+        "id": 3,
+        "Value": "Secondry activity three"
+      }
     ]
+  },
+  "FinanceData": [
+    {
+      "key": 1,
+      "IssuedShare": "USD 0",
+      "PaidCapital": "USD 00",
+      "Shares": "USD 0"
+    }
+  ],
+  "Address": [
+    {
+      "Add": "151 Chin Swee Road Manhattan House 02-24 Singapore 169876"
+    }
+  ]
 }
-

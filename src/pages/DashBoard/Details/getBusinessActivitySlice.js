@@ -10,7 +10,7 @@ export const Activity  = createAsyncThunk( "ActivityData /Activity", async () =>
 const getBusinessActivitySlice = createSlice({
     name:"ActivityData ",
     initialState:{
-      userData:[],
+      ActivityData:[],
       loading:false,
     },
     extraReducers : {

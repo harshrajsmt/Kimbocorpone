@@ -20,8 +20,8 @@ const MainHeader = () => {
         <Layout>
              <Header style={{ position: 'fixed', zIndex: 1, width: '100%', backgroundColor:'#00ac8c', overflow:'hidden' }}>
                 <Menu  style={{width:'100%',float:'left',borderBottom:'none', fontSize:"18px",fontWeight:'bold', color:'white', backgroundColor:'#00ac8c'}} mode='horizontal'>
-                    <Menu.Item>Kimbocorp</Menu.Item>
-                    <Menu.Item>
+                    <Menu.Item key="kimbocorp">Kimbocorp</Menu.Item>
+                    <Menu.Item key="searchBox">
                     <Search className={style.searchBox} placeholder="search" allowClear size='middle' suffix={suffix} />
 
                     </Menu.Item>

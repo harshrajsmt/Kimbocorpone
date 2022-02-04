@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Finance } from './getFinanceDataSlice'
 import style from './Payments.module.less'
 import { BiMessageDetail } from 'react-icons/bi';
 import { Col, Row, Card, Button, Table, Modal} from 'antd';
@@ -19,16 +21,23 @@ const FinanceColumns = [
       dataIndex: 'Shares',
     },
   ];
-  const FinanceData = [
-    {
-      key: '1',
-      IssuedShare : 'USD 0',
-      PaidCapital: 'USD 0',
-      Shares: 'USD 0',
-    }
-  ];
+  // const FinanceData = [
+  //   {
+  //     key: '1',
+  //     IssuedShare : 'USD 0',
+  //     PaidCapital: 'USD 0',
+  //     Shares: 'USD 0',
+  //   }
+  // ];
 
 const Payments = () => {
+
+
+  const dispatch = useDispatch();
+  const {FinanceData} = useSelector((state)=> state.FinanceData);
+        useEffect(() => {
+            dispatch(Finance());
+        }, [])
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [ModalVisible, setModalVisible] = useState(false);
